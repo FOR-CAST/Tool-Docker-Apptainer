@@ -1,0 +1,90 @@
+##  TODO:
+##  - "Extension-Biomass-Browse" not yet ready for v8
+##  - "Extension-Root-Rot" not yet ready for v8
+##  - "Extension-SOSIEL-Harvest" not yet ready for v8
+##  - "Extension-Output-Landscape-Habitat" not yet ready for v8
+##
+
+## Succession Extensions
+- repo: Extension-Biomass-Succession
+  org: LANDIS-II-Foundation
+  commit: master
+- repo: Extension-DGS-Succession
+  org: LANDIS-II-Foundation
+  commit: v8 ## TODO: switch to master once merged
+- repo: Extension-ForCS-Succession
+  org: LANDIS-II-Foundation ## TODO: use aruzicka555 until merged upstream?
+  commit: master
+- repo: Extension-NECN-Succession
+  org: LANDIS-II-Foundation
+  commit: master
+- repo: Extension-PnET-Succession
+  org: LANDIS-II-Foundation
+  commit: master
+
+## Disturbance and Other Extensions
+- repo: Extension-Base-BDA
+  org: LANDIS-II-Foundation
+  commit: master
+- repo: Extension-Base-Fire
+  org: LANDIS-II-Foundation
+  commit: master
+- repo: Extension-Base-Wind
+  org: LANDIS-II-Foundation
+  commit: master
+- repo: Extension-Biomass-Harvest
+  org: LANDIS-II-Foundation
+  commit: master
+- repo: Extension-Biomass-Hurricane
+  org: LANDIS-II-Foundation
+  commit: master
+- repo: Extension-Dynamic-Biomass-Fuels
+  org: LANDIS-II-Foundation
+  commit: master
+- repo: Extension-Dynamic-Fire-System
+  org: LANDIS-II-Foundation
+  commit: master
+- repo: Extension-Land-Use-Plus
+  org: LANDIS-II-Foundation
+  commit: master
+- repo: Extension-LinearWind
+  org: LANDIS-II-Foundation
+  commit: master
+- repo: Extension-Social-Climate-Fire
+  org: LANDIS-II-Foundation
+  commit: master
+- repo: LANDIS-II-Forest-Roads-Simulation-extension
+  org: Klemet
+  commit: master
+- repo: LANDIS-II-Magic-Harvest
+  org: Klemet
+  commit: main
+
+## Output Extensions
+- repo: Extension-Output-Biomass
+  org: LANDIS-II-Foundation
+  commit: master
+- repo: Extension-Output-Biomass-By-Age
+  org: LANDIS-II-Foundation
+  commit: master
+- repo: Extension-Output-Biomass-Community
+  org: LANDIS-II-Foundation
+  commit: master
+- repo: Extension-Output-Biomass-PnET
+  org: LANDIS-II-Foundation
+  commit: master
+- repo: Extension-Output-Biomass-Reclass
+  org: LANDIS-II-Foundation
+  commit: master
+- repo: Extension-Output-Cohort-Statistics
+  org: LANDIS-II-Foundation
+  commit: master
+- repo: Extension-Output-Max-Species-Age
+  org: LANDIS-II-Foundation
+  commit: master
+- repo: Extension-Output-Wildlife-Habitat
+  org: LANDIS-II-Foundation
+  commit: master
+- repo: Extension-Local-Habitat-Suitability-Output
+  org: LANDIS-II-Foundation
+  commit: master
