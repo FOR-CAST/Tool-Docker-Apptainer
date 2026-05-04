@@ -59,10 +59,9 @@
   commit: 6303c42009a4ded7f40b2e82874af428dc4837fe
 
 
-## TODO: use LANDIS-II-Foundation
 - repo: Extension-Biomass-Hurricane
-  org: jameslamping
-  commit: 6e15fba455cfce5e83274d22dbf4aeba0f46d8b2
+  org: LANDIS-II-Foundation
+  commit: bef44491f37ffd6950d26bf9d1425db509e974fe
 
 # - repo: Extension-Dynamic-Biomass-Fuels
 #   org: LANDIS-II-Foundation
