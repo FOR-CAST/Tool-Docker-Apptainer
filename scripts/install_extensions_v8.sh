@@ -105,6 +105,15 @@ for i in $(seq 0 $((count - 1))); do
 
   dotnet build "$ext_src_path" -c Release | tee -a "$EXT_LOG_FILE"
 
+  ## fail fast on a failed extension build: the pipe to `tee` masks dotnet's
+  ## exit code (the pipeline returns tee's 0), so `set -e` never trips and a
+  ## broken extension would be registered with no .dll. Check PIPESTATUS.
+  build_status=${PIPESTATUS[0]}
+  if [ "$build_status" -ne 0 ]; then
+    echo "Error: 'dotnet build' failed for extension '$repo' (exit $build_status); aborting." 1>&2
+    exit "$build_status"
+  fi
+
   ## append extension dependencies to the logfile for debugging
   dotnet list "$ext_csproj_file" package | tee -a "$EXT_LOG_FILE"
 
