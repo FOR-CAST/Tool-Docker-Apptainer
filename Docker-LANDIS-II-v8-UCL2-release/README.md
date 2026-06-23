@@ -85,6 +85,8 @@ All other enhancements from `Docker-LANDIS-II-v8-release` also apply:
 - LANDIS-II placed at `/opt/landis-ii`;
 - extension and library versions defined in shared `*.yaml` files;
 - shared `.csproj` files for Forest Roads and Magic Harvest extensions (`extension_files/`);
+  this build selects the UCLv2 Forest Roads variant (`Forest-Roads-Extension-UCLv2.csproj`)
+  via the `csproj:` field on its entry in `extensions-v8-UCL2-release.yaml`;
 - build scripts in `bash`, shared in `scripts/`;
 - shared tests (`tests/`) run as part of the build;
 
