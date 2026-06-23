@@ -1,8 +1,6 @@
 ##  TODO:
 ##  - "Extension-PnET-Succession" needs UCLv2 update
 ##  - "Extension-Base-BDA" needs UCLv2 update
-##  - "Extension-Dynamic-Biomass-Fuels" needs UCLv2 update
-##  - "Extension-Dynamic-Fire-System" needs UCLv2 update
 ##  - "Extension-LinearWind" needs UCLv2 update
 ##  - "Extension-Output-Biomass-PnET" needs UCLv2 update
 ##  - "Extension-Output-Wildlife-Habitat" needs UCLv2 update
@@ -60,13 +58,13 @@
   org: LANDIS-II-Foundation
   commit: bef44491f37ffd6950d26bf9d1425db509e974fe
 
-# - repo: Extension-Dynamic-Biomass-Fuels
-#   org: LANDIS-II-Foundation
-#   commit: 3a45afaec8c0dd17bf783043cd18eca8f79e1943
+- repo: Extension-Dynamic-Biomass-Fuels
+  org: FOR-CAST
+  commit: 2ab687b4ad9a7e88fed081b6e8d396db8fe5ed0a ## FOR-CAST fork: UCLv2 + missing-HintPath build fix (pending upstream PR)
 
-# - repo: Extension-Dynamic-Fire-System
-#   org: LANDIS-II-Foundation
-#   commit: 6c62e31405e64a486d1cee9b21672e1a9ff34e43
+- repo: Extension-Dynamic-Fire-System
+  org: FOR-CAST
+  commit: e0fc140df03a3f6398b2b3415df04a4343753288 ## FOR-CAST fork: UCLv2 + missing-HintPath build fix (pending upstream PR)
 
 - repo: Extension-Land-Use-Plus
   org: LANDIS-II-Foundation
