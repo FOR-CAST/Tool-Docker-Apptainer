@@ -5,6 +5,7 @@
 ##  - "Extension-Output-Biomass-PnET" needs UCLv2 update
 ##  - "Extension-Output-Wildlife-Habitat" needs UCLv2 update
 ##  - "Extension-Local-Habitat-Suitability-Output" needs UCLv2 update
+##  - "Extension-Land-Use-Plus" needs UCLv2 update (in progress upstream; #59)
 ##
 ##  - (BFOLDS Fire)[https://www.fire-regime-model.com/] not yet ready for v8
 ##  - "Extension-Biomass-Browse" not yet ready for v8
@@ -66,9 +67,16 @@
   org: FOR-CAST
   commit: e0fc140df03a3f6398b2b3415df04a4343753288 ## FOR-CAST fork: UCLv2 + missing-HintPath build fix (pending upstream PR)
 
-- repo: Extension-Land-Use-Plus
-  org: LANDIS-II-Foundation
-  commit: cea58ef6b94a4261dcc6f1b6074e7e130d0198a9
+## Extension-Land-Use-Plus: excluded -- upstream UCLv2 migration is unfinished.
+## master HEAD (cea58ef, the latest commit, itself a mid-migration "still won't
+## compile" state) fails CS0012: its use of Planting.SpeciesList needs
+## Succession-v9, but land-use.csproj references Succession-v10 while the image's
+## harvest libs (BiomassHarvest-v4 / SiteHarvest-v3) are built against v9. No
+## branch or fork is further along. Re-enable once upstream completes the UCLv2
+## update (see #59).
+# - repo: Extension-Land-Use-Plus
+#   org: LANDIS-II-Foundation
+#   commit: cea58ef6b94a4261dcc6f1b6074e7e130d0198a9
 
 # - repo: Extension-LinearWind
 #   org: LANDIS-II-Foundation
@@ -82,6 +90,9 @@
 - repo: LANDIS-II-Forest-Roads-Simulation-extension
   org: Klemet
   commit: 58f5a260195192c20d521e47b9e049f6c0e94022
+  ## UCLv2 build: use the UCLv2 variant of the hand-maintained .csproj, which
+  ## references Landis.Library.UniversalCohorts-v2 instead of -v1 (see issue #59).
+  csproj: Forest-Roads-Extension-UCLv2.csproj
 
 - repo: LANDIS-II-Magic-Harvest
   org: Klemet

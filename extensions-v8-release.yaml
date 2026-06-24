@@ -81,6 +81,11 @@
 - repo: LANDIS-II-Forest-Roads-Simulation-extension
   org: Klemet
   commit: b2f1345f33bf0d089dabba75f8a1afe5de2d9d26
+  ## UCLv1 build: the default hand-maintained Forest Roads .csproj, which
+  ## references Landis.Library.UniversalCohorts-v1.
+  ## The UCLv2 build selects a v2 variant via this same `csproj:` field
+  ## (see extensions-v8-UCL2-release.yaml, #59).
+  csproj: Forest-Roads-Extension.csproj
 
 - repo: LANDIS-II-Magic-Harvest
   org: Klemet
