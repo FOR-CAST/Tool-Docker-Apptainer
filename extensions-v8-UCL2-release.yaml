@@ -78,8 +78,14 @@
   commit: 4e3e2f1225b3c72ddaff345932ce3e3b96bd039d
 
 - repo: Extension-Dynamic-Fire-System
-  org: LANDIS-II-Foundation
-  commit: 63d38a7a2b7b5da73eaf7ca448edc44afd774cc4
+  org: FOR-CAST
+  ## Temporary pin to the FOR-CAST fork; revert to LANDIS-II-Foundation once upstream has
+  ## fixes for issues #14-#17. Branch FOR-CAST/forcast/harvest-stack is upstream master
+  ## 63d38a7a plus: severity 5 kills all cohorts and CohortsKilled counts every kill (#14);
+  ## DamagedSites counts the burned cells, not one more (#15); Poisson ignitions at every
+  ## NumFires, not a Bernoulli draw below 1 (#16); summary-log TotalSitesBurned / EcoMaps_
+  ## counts restored (#17).
+  commit: f457497eb118a3b31fb694987d7597275157fe7b
 
 ## Extension-Land-Use-Plus: excluded -- upstream UCLv2 migration is unfinished.
 ## master HEAD (cea58ef, the latest commit, itself a mid-migration "still won't
