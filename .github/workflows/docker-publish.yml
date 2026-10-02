@@ -9,8 +9,10 @@ on:
     ## NOTE: GitHub disables scheduled builds if no repo activity for 60 days;
     ##       to re-enable, edit the cron schedule values.
     - cron: '40 9 1,15 * *'
+  ## FOR-CAST integration branch: publish only on push to this branch. The schedule above
+  ## runs from the default branch's copy of this file, so it never builds this branch.
   push:
-    branches: [ "main" ]
+    branches: [ "forcast/harvest-stack" ]
 
 env:
   REGISTRY: ghcr.io
@@ -29,67 +31,12 @@ jobs:
       max-parallel: 3
       matrix:
         include:
-          # - dockercontext: ./Clean_Docker_LANDIS-II_7_AllExtensions
-          #   dockerfile: ./Clean_Docker_LANDIS-II_7_AllExtensions/Dockerfile
-          #   image: ghcr.io/${{ github.repository_owner }}/landis-ii-v7-linux
-          # - dockercontext: ./Clean_Docker_LANDIS-II_8_AllExtensions
-          #   dockerfile: ./Clean_Docker_LANDIS-II_8_AllExtensions/Dockerfile
-          #   image: ghcr.io/${{ github.repository_owner }}/landis-ii-v8-linux
-          # - dockercontext: ./Clean_Docker_LANDIS-II_8_Latest_Commits
-          #   dockerfile: ./Clean_Docker_LANDIS-II_8_Latest_Commits/Dockerfile
-          #   image: ghcr.io/${{ github.repository_owner }}/landis-ii-v8-latest
-
-          ## v7 — stays on Ubuntu 22.04 permanently (.NET 2.2 / libssl1.1 requirement)
-          - dockercontext: .
-            dockerfile: ./Docker-LANDIS-II-v7-release/Dockerfile
-            image: ghcr.io/${{ github.repository_owner }}/landis-ii-v7-release
-            ubuntu_version: "22.04"
-            is_latest: "true"
-            build_ubuntu_arg: "false"
-
-          ## v8-release — Ubuntu 24.04 and 26.04
-          - dockercontext: .
-            dockerfile: ./Docker-LANDIS-II-v8-release/Dockerfile
-            image: ghcr.io/${{ github.repository_owner }}/landis-ii-v8-release
-            ubuntu_version: "24.04"
-            is_latest: "false"
-            build_ubuntu_arg: "true"
-          - dockercontext: .
-            dockerfile: ./Docker-LANDIS-II-v8-release/Dockerfile
-            image: ghcr.io/${{ github.repository_owner }}/landis-ii-v8-release
-            ubuntu_version: "26.04"
-            is_latest: "true"
-            build_ubuntu_arg: "true"
-
-          ## v8-UCL2-release — Ubuntu 24.04 and 26.04
+          ## FOR-CAST integration branch: the UCLv2 image on Ubuntu 24.04 only.
           - dockercontext: .
             dockerfile: ./Docker-LANDIS-II-v8-UCL2-release/Dockerfile
             image: ghcr.io/${{ github.repository_owner }}/landis-ii-v8-uclv2-release
             ubuntu_version: "24.04"
-            is_latest: "false"
             build_ubuntu_arg: "true"
-          - dockercontext: .
-            dockerfile: ./Docker-LANDIS-II-v8-UCL2-release/Dockerfile
-            image: ghcr.io/${{ github.repository_owner }}/landis-ii-v8-uclv2-release
-            ubuntu_version: "26.04"
-            is_latest: "true"
-            build_ubuntu_arg: "true"
-
-          ## v8-R — rocker/r-ver:4.6.0 is Ubuntu 24.04; revisit when R 4.6.1 ships (~June 2026)
-          - dockercontext: .
-            dockerfile: ./Docker-LANDIS-II-v8-R/Dockerfile
-            image: ghcr.io/${{ github.repository_owner }}/landis-ii-v8-R
-            ubuntu_version: "24.04"
-            is_latest: "true"
-            build_ubuntu_arg: "false"
-
-          ## v8-Rstudio — rocker/geospatial:4.6.0 is Ubuntu 24.04; revisit when R 4.6.1 ships (~June 2026)
-          - dockercontext: .
-            dockerfile: ./Docker-LANDIS-II-v8-Rstudio/Dockerfile
-            image: ghcr.io/${{ github.repository_owner }}/landis-ii-v8-Rstudio
-            ubuntu_version: "24.04"
-            is_latest: "true"
-            build_ubuntu_arg: "false"
 
     ## Set the permissions granted to the `GITHUB_TOKEN` for the actions in this job
     permissions:
@@ -128,11 +75,11 @@ jobs:
         uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934 # v5.0.0
         with:
           images: ${{ matrix.image }}
+          ## FOR-CAST integration branch: harvest-prefixed tags only, so this never replaces
+          ## the :ubuntu-<version> / :latest images that `main` publishes.
           tags: |
-            type=ref,event=branch,enable=${{ matrix.is_latest == 'true' }}
-            type=raw,value=ubuntu-${{ matrix.ubuntu_version }}
-            type=raw,value=ubuntu-latest,enable=${{ matrix.is_latest == 'true' }}
-            type=raw,value=latest,enable=${{ matrix.is_latest == 'true' }}
+            type=raw,value=harvest-ubuntu-${{ matrix.ubuntu_version }}
+            type=sha,prefix=harvest-ubuntu-${{ matrix.ubuntu_version }}-
 
       ## Build and push Docker image with Buildx (don't push on PR)
       ## https://github.com/docker/build-push-action
