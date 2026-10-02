@@ -117,6 +117,17 @@ COPY support-libraries-v8-UCL2-release.yaml $LANDIS_DIR/support-libraries-v8-UCL
 
 RUN scripts/install_support_libraries_v8.sh support-libraries-v8-UCL2-release.yaml $LANDIS_DIR
 
+## rebuild the support libraries that the extensions must *compile against*
+##
+##  - most libraries are rebuilt after the extensions (see further below), which is
+##    enough when an extension only needs the rebuilt .dll at run time;
+##  - see `libraries-v8-UCL2-prebuild.yaml` for the ones that are rebuilt *before*
+##    the extensions are built, and why.
+
+COPY libraries-v8-UCL2-prebuild.yaml $LANDIS_DIR/libraries-v8-UCL2-prebuild.yaml
+
+RUN scripts/install_libraries_v8.sh libraries-v8-UCL2-prebuild.yaml $LANDIS_DIR
+
 ## get, build, and register all available extensions
 ##
 ##  - necessary files are downloaded and built using `scripts/install_extensions_v8.sh`;

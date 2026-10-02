@@ -1,0 +1,20 @@
+## Support libraries that must be rebuilt BEFORE the extensions are compiled
+## (UCLv2 image only; see `Docker-LANDIS-II-v8-UCL2-release/Dockerfile`).
+##
+## The other support libraries are rebuilt *after* the extensions
+## (`libraries-v8-release.yaml`); this file exists for the cases where an
+## extension has to *compile against* a rebuilt library rather than merely load
+## it at runtime.
+##
+## IMPORTANT: library order matters here, as it does in `libraries-v8-release.yaml`.
+
+## Library-Harvest-Mgmt: temporary pin to the FOR-CAST fork, rebuilt here so the harvest
+## extensions compile against it and it replaces the Support-Library-Dlls-v8 copy in
+## build/extensions. Branch FOR-CAST/forcast/harvest-stack is upstream master 49c6f81c plus
+## fixes for upstream issues #34 (StandAdjacency stops a spreading harvest after one event)
+## and #35 (AdjacencyNeighborSetAside is never applied), and HintPaths corrected to the DLL
+## names its download script fetches.
+## Remove this entry once upstream has the fixes and Support-Library-Dlls-v8 ships them.
+- repo: Library-Harvest-Mgmt
+  org: FOR-CAST
+  commit: c91f2e2c073fa1deef4f10f3ea3432b74d56bf36
