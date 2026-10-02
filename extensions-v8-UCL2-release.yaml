@@ -23,8 +23,12 @@
 #   commit: dde267702c587c10d04951f4c4ea754ebeb67bfa ## v8 branch
 
 - repo: Extension-ForCS-Succession
-  org: LANDIS-II-Foundation
-  commit: a889d39dd3a4f3f8f681872765335ac08a4656f5 ## fix init with Dynamic Fire (ForCS#8)
+  org: FOR-CAST
+  ## Temporary pin to the FOR-CAST fork; revert to LANDIS-II-Foundation once
+  ## upstream PR #11 merges. Branch FOR-CAST/fix/partial-mortality-fraction
+  ## (upstream PR #11, "Book partial cohort mortality at the reduction fraction")
+  ## is one commit on a889d39d, the previous pin (fix init with Dynamic Fire, ForCS#8).
+  commit: f8a9e7d725bb418a720a197970b84bbe07e640ef
 
 - repo: Extension-NECN-Succession
   org: LANDIS-II-Foundation
