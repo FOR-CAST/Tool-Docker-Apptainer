@@ -30,3 +30,14 @@
   ## `UCL_update` branch HEAD, the commit that PnET-Succession's own .csproj
   ## names as the source of its `Landis.Library.PnETCohorts-v2` reference.
   commit: 3c40197848b7b66c31882ce87d82037e42820737
+
+## Library-Harvest-Mgmt: temporary pin to the FOR-CAST fork, rebuilt here so the harvest
+## extensions compile against it and it replaces the Support-Library-Dlls-v8 copy in
+## build/extensions. Branch FOR-CAST/forcast/harvest-stack is upstream master 49c6f81c plus
+## fixes for upstream issues #34 (StandAdjacency stops a spreading harvest after one event)
+## and #35 (AdjacencyNeighborSetAside is never applied), and HintPaths corrected to the DLL
+## names its download script fetches.
+## Remove this entry once upstream has the fixes and Support-Library-Dlls-v8 ships them.
+- repo: Library-Harvest-Mgmt
+  org: FOR-CAST
+  commit: c91f2e2c073fa1deef4f10f3ea3432b74d56bf36
