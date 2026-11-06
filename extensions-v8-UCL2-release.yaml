@@ -88,8 +88,10 @@
   ## 63d38a7a plus: severity 5 kills all cohorts and CohortsKilled counts every kill (#14);
   ## DamagedSites counts the burned cells, not one more (#15); Poisson ignitions at every
   ## NumFires, not a Bernoulli draw below 1 (#16); summary-log TotalSitesBurned / EcoMaps_
-  ## counts restored (#17).
-  commit: f457497eb118a3b31fb694987d7597275157fe7b
+  ## counts restored (#17); and an optional per-species GroundFireKill column in the species
+  ## table (below severity 5 a species with a value dies in a burned cell with that probability;
+  ## a table without the column behaves as before).
+  commit: c02733db88a9e3e3dcd5183dddc1615a834dd907
 
 ## Extension-Land-Use-Plus: excluded -- upstream UCLv2 migration is unfinished.
 ## master HEAD (cea58ef, the latest commit, itself a mid-migration "still won't
